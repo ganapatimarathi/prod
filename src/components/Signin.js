@@ -1,9 +1,11 @@
 import React, { useState, useContext } from "react";
 import { Redirect } from "react-router-dom";
+import { UserContext } from "../context/user/userContext";
 
 import Form from "./Form";
 
 const Signin = () => {
+  const { isSignedin, SetIsSigniedIn } = useContext(UserContext);
 
   const [userData, setUseradata] = useState({ email: "", password: "" });
   const [redirect, setRedirect] = useState(false);
@@ -17,6 +19,7 @@ const Signin = () => {
     e.preventDefault();
     if (userData.email === "tester@gmail.com" && userData.password === "abcd") {
       setRedirect(true);
+      SetIsSigniedIn({ payload: true });
     } else {
       //   alert("please check the fields");
     }
