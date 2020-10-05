@@ -1,11 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { BlogContext } from "../context/blog/blogContext";
 
 const Home = () => {
-  const [blogs, setBlogs] = useState([
-    { title: "blog 1", description: "this is the description for blog 1" },
-    { title: "blog 2", description: "this is the description for blog 1" },
-    { title: "blog 2", description: "this is the description for blog 1" },
-  ]);
+  const { blogs, dispatch } = useContext(BlogContext);
 
   return (
     <div className="container mt-5">

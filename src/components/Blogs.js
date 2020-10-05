@@ -1,8 +1,10 @@
 import React, { useContext, useState } from "react";
+import { BlogContext } from "../context/blog/blogContext";
 import { Redirect } from "react-router-dom";
 import Form from "./Form";
 
 const Blogs = () => {
+  const { blogs, dispatch } = useContext(BlogContext);
   const [blog, addBlog] = useState({ title: "", description: "" });
   const [redirect, setRedirect] = useState(false);
 
@@ -12,6 +14,7 @@ const Blogs = () => {
 
   const HandleSubmit = (e) => {
     e.preventDefault();
+    dispatch({ payload: blog });
     setRedirect(true);
   };
 
